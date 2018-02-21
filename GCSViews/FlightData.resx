@@ -291,6 +291,12 @@
   <data name="setViewCountToolStripMenuItem.Text" xml:space="preserve">
     <value>Set View Count</value>
   </data>
+  <data name="setPitchOffsetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set Pitch Offset</value>
+  </data>
+  <data name="resetPitchOffsetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Reset Pitch Offset</value>
+  </data>
   <data name="contextMenuStripQuickView.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 26</value>
   </data>

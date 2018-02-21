@@ -4435,6 +4435,18 @@ namespace MissionPlanner.GCSViews
             new Utilities.AltitudeAngel.AASettings().Show(this);
         }
 
+        private void setPitchOffsetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hud1.pitch_base = hud1.pitch_offset;
+            MissionPlanner.CurrentState.setPitchOffset(hud1.pitch);
+        }
+
+        private void resetPitchOffsetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hud1.pitch_offset = 0;
+            MissionPlanner.CurrentState.setPitchOffset(0);
+        }
+
         private void setViewCountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string cols = "2", rows = "3";

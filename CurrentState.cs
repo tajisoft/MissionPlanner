@@ -53,12 +53,18 @@ namespace MissionPlanner
             return input/multiplierspeed;
         }
 
+        public static void setPitchOffset(float pitch)
+        {
+            pitch_offset = pitch;
+        }
+
         // orientation - rads
         [DisplayText("Roll (deg)")]
         public float roll { get; set; }
 
         [DisplayText("Pitch (deg)")]
         public float pitch { get; set; }
+        private static float pitch_offset { get; set; }
 
         [DisplayText("Yaw (deg)")]
         public float yaw
@@ -2129,6 +2135,10 @@ namespace MissionPlanner
                         pitch = (float)(att.pitch*MathHelper.rad2deg);
                         yaw = (float)(att.yaw*MathHelper.rad2deg);
 
+                        // FIX
+                        roll = (float)Math.Round(roll, 1, MidpointRounding.AwayFromZero);
+                        pitch = (float) Math.Round(pitch - pitch_offset, 1, MidpointRounding.AwayFromZero);
+                        yaw = (float)Math.Round(yaw, 1, MidpointRounding.AwayFromZero);
                         //Console.WriteLine(MAV.sysid + " " +roll + " " + pitch + " " + yaw);
 
                         //MAVLink.packets[(byte)MAVLink.MSG_NAMES.ATTITUDE);

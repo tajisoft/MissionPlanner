@@ -860,7 +860,7 @@ Please check the following
 
                 try
                 {
-                    if (logfile != null && logfile.CanWrite)
+                    if (logfile != null && logfile.CanWrite && false)
                     {
                         lock (logfile)
                         {
@@ -3899,7 +3899,7 @@ Please check the following
 
                     try
                     {
-                        if (logfile != null && logfile.CanWrite && !logreadmode)
+                        if (logfile != null && logfile.CanWrite && !logreadmode && msgid == (byte)MAVLINK_MSG_ID.ATTITUDE)
                         {
                             lock (logfile)
                             {

@@ -154,6 +154,8 @@ namespace MissionPlanner.Controls
         private float _roll = 0;
         private float _navroll = 0;
         private float _pitch = 0;
+        private float _pitch_offset = 0;
+        public float pitch_base = 0;
         private float _navpitch = 0;
         private float _heading = 0;
         private float _targetheading = 0;
@@ -226,6 +228,20 @@ namespace MissionPlanner.Controls
                 if (_pitch != value)
                 {
                     _pitch = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        [System.ComponentModel.Browsable(true), System.ComponentModel.Category("Values")]
+        public float pitch_offset
+        {
+            get { return _pitch_offset; }
+            set
+            {
+                if (_pitch_offset != value)
+                {
+                    _pitch_offset = value;
                     this.Invalidate();
                 }
             }
@@ -1591,8 +1607,9 @@ namespace MissionPlanner.Controls
                 int fontoffset = fontsize - 10;
 
                 float every5deg = -this.Height / 65;
-
-                float pitchoffset = -_pitch * every5deg;
+                
+                float pitchoffset = -pitch * every5deg;
+                pitch_offset = pitchoffset - pitch_base;
 
                 int halfwidth = this.Width / 2;
                 int halfheight = this.Height / 2;
@@ -1664,36 +1681,32 @@ namespace MissionPlanner.Controls
                     int lengthshort = this.Width / 14;
                     int lengthlong = this.Width / 10;
 
-                    for (int a = -90; a <= 90; a += 5)
+                    for (int a = 0; a <= 140; a += 5)
                     {
-                        // limit to 40 degrees
-                        if (a >= _pitch - 29 && a <= _pitch + 20)
+                        if (a % 10 == 0)
                         {
-                            if (a % 10 == 0)
+                            if (a == 0)
                             {
-                                if (a == 0)
-                                {
-                                    graphicsObject.DrawLine(this._greenPen, this.Width / 2 - lengthlong - halfwidth,
-                                        pitchoffset + a * every5deg, this.Width / 2 + lengthlong - halfwidth,
-                                        pitchoffset + a * every5deg);
-                                }
-                                else
-                                {
-                                    graphicsObject.DrawLine(this._whitePen, this.Width / 2 - lengthlong - halfwidth,
-                                        pitchoffset + a * every5deg, this.Width / 2 + lengthlong - halfwidth,
-                                        pitchoffset + a * every5deg);
-                                }
-                                drawstring(graphicsObject, a.ToString(), font, fontsize + 2, _whiteBrush,
-                                    this.Width / 2 - lengthlong - 30 - halfwidth - (int) (fontoffset * 1.7),
-                                    pitchoffset + a * every5deg - 8 - fontoffset);
+                                graphicsObject.DrawLine(this._greenPen, this.Width / 2 - lengthlong - halfwidth,
+                                    pitchoffset + a * every5deg, this.Width / 2 + lengthlong - halfwidth,
+                                    pitchoffset + a * every5deg);
                             }
                             else
                             {
-                                graphicsObject.DrawLine(this._whitePen, this.Width / 2 - lengthshort - halfwidth,
-                                    pitchoffset + a * every5deg, this.Width / 2 + lengthshort - halfwidth,
+                                graphicsObject.DrawLine(this._whitePen, this.Width / 2 - lengthlong - halfwidth,
+                                    pitchoffset + a * every5deg, this.Width / 2 + lengthlong - halfwidth,
                                     pitchoffset + a * every5deg);
-                                //drawstring(e,a.ToString(), new Font("Arial", 10), whiteBrush, this.Width / 2 - lengthshort - 20 - halfwidth, this.Height / 2 + pitchoffset + a * every5deg - 8);
                             }
+                            drawstring(graphicsObject, a.ToString(), font, fontsize + 2, _whiteBrush,
+                                this.Width / 2 - lengthlong - 30 - halfwidth - (int) (fontoffset * 1.7),
+                                pitchoffset + a * every5deg - 8 - fontoffset);
+                        }
+                        else
+                        {
+                            graphicsObject.DrawLine(this._whitePen, this.Width / 2 - lengthshort - halfwidth,
+                                pitchoffset + a * every5deg, this.Width / 2 + lengthshort - halfwidth,
+                                pitchoffset + a * every5deg);
+                            //drawstring(e,a.ToString(), new Font("Arial", 10), whiteBrush, this.Width / 2 - lengthshort - 20 - halfwidth, this.Height / 2 + pitchoffset + a * every5deg - 8);
                         }
                     }
 

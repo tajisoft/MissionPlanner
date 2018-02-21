@@ -33,6 +33,8 @@
             this.quickView6 = new MissionPlanner.Controls.QuickView();
             this.contextMenuStripQuickView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.setViewCountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPitchOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPitchOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSourceQuickTab = new System.Windows.Forms.BindingSource(this.components);
             this.quickView5 = new MissionPlanner.Controls.QuickView();
             this.quickView4 = new MissionPlanner.Controls.QuickView();
@@ -503,15 +505,28 @@
             this.quickView6.Name = "quickView6";
             this.quickView6.number = 0D;
             this.quickView6.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(252)))));
-            this.quickView6.numberformat = "0.00";
+            // FIX
+            this.quickView6.numberformat = "0.0";
             this.quickView6.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
             // contextMenuStripQuickView
             // 
             this.contextMenuStripQuickView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setViewCountToolStripMenuItem});
+            this.setViewCountToolStripMenuItem, this.setPitchOffsetToolStripMenuItem, this.resetPitchOffsetToolStripMenuItem});
             this.contextMenuStripQuickView.Name = "contextMenuStripQuickView";
             resources.ApplyResources(this.contextMenuStripQuickView, "contextMenuStripQuickView");
+            //
+            // setPitchOffsetToolStripMenuItem
+            //
+            this.setPitchOffsetToolStripMenuItem.Name = "setPitchOffsetToolStripMenuItem";
+            resources.ApplyResources(this.setPitchOffsetToolStripMenuItem, "setPitchOffsetToolStripMenuItem");
+            this.setPitchOffsetToolStripMenuItem.Click += new System.EventHandler(this.setPitchOffsetToolStripMenuItem_Click);
+            //
+            // resetPitchOffsetToolStripMenuItem
+            //
+            this.resetPitchOffsetToolStripMenuItem.Name = "resetPitchOffsetToolStripMenuItem";
+            resources.ApplyResources(this.resetPitchOffsetToolStripMenuItem, "resetPitchOffsetToolStripMenuItem");
+            this.resetPitchOffsetToolStripMenuItem.Click += new System.EventHandler(this.resetPitchOffsetToolStripMenuItem_Click);
             // 
             // setViewCountToolStripMenuItem
             // 
@@ -532,7 +547,8 @@
             this.quickView5.Name = "quickView5";
             this.quickView5.number = 0D;
             this.quickView5.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(86)))));
-            this.quickView5.numberformat = "0.00";
+            // FIX
+            this.quickView5.numberformat = "0.0";
             this.quickView5.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
             // quickView4
@@ -544,7 +560,8 @@
             this.quickView4.Name = "quickView4";
             this.quickView4.number = 0D;
             this.quickView4.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(83)))));
-            this.quickView4.numberformat = "0.00";
+            // FIX
+            this.quickView4.numberformat = "0.0";
             this.quickView4.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
             // quickView3
@@ -556,7 +573,8 @@
             this.quickView3.Name = "quickView3";
             this.quickView3.number = 0D;
             this.quickView3.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(96)))), ((int)(((byte)(91)))));
-            this.quickView3.numberformat = "0.00";
+            // FIX
+            this.quickView3.numberformat = "0.0";
             this.quickView3.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
             // quickView2
@@ -568,7 +586,8 @@
             this.quickView2.Name = "quickView2";
             this.quickView2.number = 0D;
             this.quickView2.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(132)))), ((int)(((byte)(46)))));
-            this.quickView2.numberformat = "0.00";
+            // FIX
+            this.quickView2.numberformat = "0.0";
             this.quickView2.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
             // quickView1
@@ -580,7 +599,8 @@
             this.quickView1.Name = "quickView1";
             this.quickView1.number = 0D;
             this.quickView1.numberColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(151)))), ((int)(((byte)(248)))));
-            this.quickView1.numberformat = "0.00";
+            // FIX
+            this.quickView1.numberformat = "0.0";
             this.toolTip1.SetToolTip(this.quickView1, resources.GetString("quickView1.ToolTip"));
             this.quickView1.DoubleClick += new System.EventHandler(this.quickView_DoubleClick);
             // 
@@ -2533,6 +2553,8 @@
         private System.Windows.Forms.ToolStripMenuItem altitudeAngelSettingsToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripQuickView;
         private System.Windows.Forms.ToolStripMenuItem setViewCountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setPitchOffsetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetPitchOffsetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setGStreamerSourceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setEKFHomeHereToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPayload;
